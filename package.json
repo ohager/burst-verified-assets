@@ -1,0 +1,82 @@
+{
+  "name": "burst-verified-assets",
+  "description": "A decentralized application for IP assets",
+  "keywords": [
+    "blockchain",
+    "burstcoin",
+    "dApp",
+    "dWeb",
+    "web3.0"
+  ],
+  "contributors": [
+    {
+      "email": "ohager@burst-alliance.org",
+      "name": "ohager"
+    },
+    {
+      "name": "curbshifter"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "github",
+    "url": "git@github.com:ohager/burst-verified-assets.git"
+  },
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "sapper dev -p 3001",
+    "build": "sapper build --legacy",
+    "export": "SAPPER_SW_TIMESTAMP=$(date +%s%3N) sapper export --entry \"/ about tutorial register\" ",
+    "start": "node __sapper__/build",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "test": "run-p --race dev cy:run"
+  },
+  "dependencies": {
+    "@burstjs/contracts": "^0.5.1",
+    "@burstjs/core": "^0.5.1",
+    "@burstjs/crypto": "^0.5.1",
+    "@burstjs/http": "^0.5.1",
+    "@burstjs/util": "^0.5.1",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "dexie": "^3.0.2",
+    "dotenv": "^8.2.0",
+    "lodash.debounce": "^4.0.8",
+    "magic-mapper": "0.0.11",
+    "polka": "next",
+    "qrcode": "^1.4.4",
+    "query-string": "^6.13.6",
+    "sapper-environment": "^1.0.1",
+    "sirv": "^1.0.7"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/runtime": "^7.12.1",
+    "@rollup/plugin-replace": "^2.3.4",
+    "eslint": "^7.12.1",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-svelte3": "^2.7.3",
+    "node-sass": "^5.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.1.2",
+    "prettier-plugin-svelte": "^1.4.1",
+    "rollup": "^2.33.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-svelte": "^6.1.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "sapper": "^0.28.10",
+    "svelte": "^3.29.4",
+    "svelte-material-ui": "^1.0.0",
+    "svelte-share-buttons-component": "^1.2.0",
+    "vercel": "^20.1.2"
+  }
+}
