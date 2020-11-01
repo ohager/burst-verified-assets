@@ -15,6 +15,6 @@ TO DO
 
 > This will be relevant for deployment on platforms like Vercel, Fastify, Github Pages etc.
 
-1. `npm run build`
+1. `npm run export`
     - The static site is being available under __sapper__/build 
-2. `npm start`
+2. `npx serve __sapper__/export`
