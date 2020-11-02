@@ -2,14 +2,15 @@ import { tokenMonitorRepository } from './repositories/tokenMonitorRepository'
 import { TokenStateMonitor } from './TokenStateMonitor'
 import { dispatchEvent } from '../utils/dispatchEvent'
 import { Events } from '../utils/events'
-import { updateActiveTokens } from '../features/account/tokenMonitorStore'
-import { applicationTokenRepository } from './repositories/applicationTokenRepository'
+// import { updateActiveTokens } from '../features/account/tokenMonitorStore'
+// import { applicationTokenRepository } from './repositories/applicationTokenRepository'
 import { Vars } from '../context'
 
+// FIX: make it generic
 export class TokenMonitorService {
     constructor(
         monitorRepository = tokenMonitorRepository,
-        tokenRepository = applicationTokenRepository,
+        tokenRepository = null //applicationTokenRepository,
     ) {
         this._dispatch = dispatchEvent
         this._monitorRepository = monitorRepository

@@ -1,4 +1,5 @@
 <script>
+    /*
     import { account$ } from '../features/_common/accountStore'
     import { isEmptyString } from '../utils/isEmptyString'
     import { getUrlQuery } from '../utils/getUrlQuery'
@@ -9,7 +10,7 @@
     $: accountId = $account$.accountId
     $: hasAccount = !isEmptyString(accountId)
     $: searchText = query.q || ''
-
+    */
 </script>
 
 <div>
