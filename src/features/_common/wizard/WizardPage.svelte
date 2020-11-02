@@ -8,7 +8,7 @@
 
 <style>
     .wizard-page {
-        height: 480px;
+        min-height: 320px;
         max-height: 480px;
         overflow-y: auto;
     }

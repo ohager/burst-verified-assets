@@ -1,16 +1,17 @@
 <script>
     import WizardPage from '../../_common/wizard/WizardPage.svelte'
-    import Button, { Label } from '@smui/button'
+    import Radio from '@smui/radio'
+    import FormField from '@smui/form-field'
     import { setCreatePages, setImportPages } from '../accountWizardStore'
 
-    // TODO: adjust this
+    let selected = 'import'
+    $:{
+        if (selected === 'import') {
+            setImportPages()
+        } else {
+            setCreatePages()
 
-    function handleImport() {
-        setImportPages()
-    }
-
-    function handleCreate() {
-        setCreatePages()
+        }
     }
 
 </script>
@@ -21,13 +22,23 @@
     <p class="mdc-typography--body1">
         Do you have an account already, or do you need to create a new one?
     </p>
-    <p class="mdc-typography--body1">
-        <Button on:click={handleImport}>
-            <Label>I have one</Label>
-        </Button>
-        <Button on:click={handleCreate}>
-            <Label>I need one</Label>
-        </Button>
-
+    <p class="options mdc-typography--body1">
+        <FormField>
+            <Radio bind:group={selected} value="import" />
+            <span slot="label">I HAVE ONE</span>
+        </FormField>
+        <FormField>
+            <Radio bind:group={selected} value="create" />
+            <span slot="label">I NEED ONE</span>
+        </FormField>
     </p>
 </WizardPage>
+
+<style>
+    .options {
+        margin-top: 4rem;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-around;
+    }
+</style>
