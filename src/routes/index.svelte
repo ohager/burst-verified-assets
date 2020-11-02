@@ -14,7 +14,7 @@
 </script>
 
 <div>
-    {#if !$account$.accountId?.length}
+    {#if !$account$.accountId.length}
         <AccountFabButton on:mouseenter={prefetchRoute} on:click={handleClick} />
     {:else}
         <h1>To do Start screen for "logged" user</h1>
