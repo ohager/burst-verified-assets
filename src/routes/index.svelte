@@ -1,18 +1,18 @@
 <script>
-    /*
-    import { account$ } from '../features/_common/accountStore'
-    import { isEmptyString } from '../utils/isEmptyString'
-    import { getUrlQuery } from '../utils/getUrlQuery'
+    import AccountFabButton from '../features/_common/AccountFabButton.svelte'
+    import { goto, prefetch } from '@sapper/app'
+    import { RouteAccount } from '../utils/routes'
 
-    // need to use like SPA and not SSR (due to sapper export)
-    let query = getUrlQuery()
+    function handleClick() {
+        goto(RouteAccount())
+    }
 
-    $: accountId = $account$.accountId
-    $: hasAccount = !isEmptyString(accountId)
-    $: searchText = query.q || ''
-    */
+    const prefetchRoute = () => {
+        prefetch(RouteAccount())
+    }
 </script>
 
 <div>
+    <AccountFabButton on:mouseenter={prefetchRoute} on:click={handleClick}/>
 </div>
 
