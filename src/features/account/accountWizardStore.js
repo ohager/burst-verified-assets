@@ -10,3 +10,8 @@ export function setAccountWizardMode(mode) {
     accountWizardMode$.update(() => mode)
 }
 
+export const accountWizardCanProceed$ = writable(true)
+
+export function setAccountWizardCanProceed(canProceed = true) {
+    accountWizardCanProceed$.update(() => canProceed)
+}

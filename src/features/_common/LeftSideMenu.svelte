@@ -7,7 +7,7 @@
     import { account$, clearAccount } from './accountStore'
     import { setTheme, theme$ } from './appStore'
     import { isEmptyString } from '../../utils/isEmptyString'
-    import { RouteAbout, RouteAccountTokens, RouteHome, RouteTutorial } from '../../utils/routes'
+    import { RouteAbout, RouteAccount, RouteAccountTokens, RouteHome, RouteTutorial } from '../../utils/routes'
     import { Events } from '../../utils/events'
     import { dispatchEvent } from '../../utils/dispatchEvent'
     import { ThemeNames } from '../../utils/themeNames'
@@ -57,7 +57,7 @@
             routeTo(RouteAccountTokens(currentAccount))
         } else {
             closeDrawer()
-            dispatchEvent(Events.ShowAccountDialog, { isVisible: true })
+            routeTo(RouteAccount())
         }
     }
 
@@ -108,14 +108,14 @@
                       activated={active === ItemNames.LeaveAccountZone}
                 >
                     <Graphic class="material-icons" aria-hidden="true">clear</Graphic>
-                    <Text>Leave Account Zone</Text>
+                    <Text>Leave</Text>
                 </Item>
             {:else}
                 <Item on:click={enterAccountZone}
                       activated={active === ItemNames.EnterAccountZone}
                 >
                     <Graphic class="material-icons" aria-hidden="true">admin_panel_settings</Graphic>
-                    <Text>Enter Account Zone</Text>
+                    <Text>Enter</Text>
                 </Item>
             {/if}
             <Item on:click={gotoTutorial}

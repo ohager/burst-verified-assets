@@ -1,36 +1,36 @@
 <script>
-    import { beforeUpdate } from 'svelte'
-    import { goto } from '@sapper/app'
+    import { beforeUpdate, createEventDispatcher } from 'svelte'
     import Button, { Label } from '@smui/button'
     import Page from '../Page.svelte'
-    import { RouteHome } from '../../../utils/routes'
 
     export let pages = []
     export let iconSrc = ''
     export let title = ''
-    let currentPage = 0
+    export let canProceed = true
+
+    export let currentPage = 0
+    const dispatch = createEventDispatcher()
 
     $: maxPageCount = pages.length - 1
     $: hasFinished = currentPage === maxPageCount
 
     function handleBack() {
         if (currentPage === 0) {
-            return goto(RouteHome(), {})
+            dispatch('home')
         }
         currentPage = Math.max(--currentPage, 0)
     }
 
     function handleNext() {
-        if (hasFinished) {
-            return goto(RouteHome(), {})
-        }
         currentPage = Math.min(++currentPage, maxPageCount)
+        if (hasFinished) {
+            dispatch('finished')
+        }
     }
 
     beforeUpdate(() => {
         currentPage = Math.min(currentPage, maxPageCount)
     })
-
 
 </script>
 
@@ -41,7 +41,7 @@
     </div>
     <div class="form">
         <div class="content">
-            <svelte:component this={pages[currentPage]} />
+            <svelte:component this={pages[currentPage]}/>
         </div>
         <div class="dots">
             {#each pages as page, index}
@@ -52,7 +52,7 @@
             <Button on:click={handleBack}>
                 <Label>{currentPage === 0 ? "Home" : "Back"}</Label>
             </Button>
-            <Button on:click={handleNext}>
+            <Button on:click={handleNext} disabled={!canProceed}>
                 <Label>{hasFinished ? "Finish" : "Next"}</Label>
             </Button>
         </div>

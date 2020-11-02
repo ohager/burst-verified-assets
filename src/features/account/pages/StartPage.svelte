@@ -3,15 +3,16 @@
     import Radio from '@smui/radio'
     import FormField from '@smui/form-field'
     import { setAccountWizardMode, AccountWizardMode } from '../accountWizardStore'
+    import { voidFn } from '../../../utils/voidFn'
 
     let selected = AccountWizardMode.Import
+    let next = true
     $:{
         setAccountWizardMode(selected)
     }
 </script>
 
-
-<WizardPage>
+<WizardPage bind:next>
     <h1 class="mdc-typography--headline6">Use existing account or create one?</h1>
     <p class="mdc-typography--body1">
         Do you have an account already, or do you need to create a new one?
