@@ -69,6 +69,7 @@ export default {
                         'composeApi',
                         'broadcastTransaction',
                         'BurstService',
+                        'AttachmentMessage'
                     ],
                     '@burstjs/crypto': [
                         'generateMasterKeys',

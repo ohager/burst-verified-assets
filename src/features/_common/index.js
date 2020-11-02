@@ -12,7 +12,7 @@ import MaintenanceHeader from './MaintenanceHeader.svelte'
 import Page from './Page.svelte'
 import PassphraseInput from './PassphraseInput.svelte'
 import PaymentQrCode from './PaymentQrCode.svelte'
-import RegisterFabButton from './RegisterFabButton.svelte'
+import AccountFabButton from './AccountFabButton.svelte'
 import Omnibar from './omnibar/Omnibar.svelte'
 import Link from './Link.svelte'
 import { omnibarStore$ } from './omnibar/omnibarStore'
@@ -40,7 +40,7 @@ export {
     Page,
     PassphraseInput,
     PaymentQrCode,
-    RegisterFabButton,
+    AccountFabButton,
     Stamp,
     TabContent,
     ThemeProvider,

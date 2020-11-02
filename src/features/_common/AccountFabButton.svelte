@@ -5,8 +5,8 @@
 <div class="btn-register">
     <Fab on:mouseenter
          on:click extended>
-        <Icon class="material-icons">add_to_queue</Icon>
-        <Label>Register</Label>
+        <Icon class="material-icons">login</Icon>
+        <Label>Enter</Label>
     </Fab>
 </div>
 

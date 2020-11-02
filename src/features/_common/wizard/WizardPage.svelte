@@ -2,13 +2,13 @@
     import { fade } from 'svelte/transition'
 </script>
 
-<div class="tutorial-page" in:fade="{{ duration: 500 }}">
+<div class="wizard-page" in:fade="{{ duration: 500 }}">
     <slot/>
 </div>
 
 <style>
     .wizard-page {
-        height: 480px;
+        min-height: 320px;
         max-height: 480px;
         overflow-y: auto;
     }

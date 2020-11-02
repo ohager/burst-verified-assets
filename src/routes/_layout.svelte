@@ -38,7 +38,7 @@
         <Message/>
         <main>
             <LeftSideMenu bind:open={isMenuOpen} />
-            <AccountDialog/>
+<!--            <AccountDialog/>-->
             <slot/>
         </main>
     {/if}

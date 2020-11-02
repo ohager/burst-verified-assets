@@ -13,3 +13,5 @@ export const RouteAccountTokens = (accountId, wantsRegister = false) =>
     `/account/${accountId}${wantsRegister ? '?register=true' : ''}`
 export const RouteTutorial = () => '/tutorial'
 export const RouteAbout = () => '/about'
+
+export const RouteAccount = () => `/account`
