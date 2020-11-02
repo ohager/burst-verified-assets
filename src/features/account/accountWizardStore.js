@@ -1,18 +1,12 @@
 import { writable } from 'svelte/store'
-import StartPage from './pages/StartPage.svelte'
-import EnterPassphrasePage from './pages/EnterPassphrasePage.svelte'
-import GeneratePassphrasePage from './pages/GeneratePassphrasePage.svelte'
 
-const ImportPages = [StartPage, EnterPassphrasePage]
-// TODO: correct pages
-const CreatePages = [StartPage, GeneratePassphrasePage, StartPage]
+export const AccountWizardMode = {
+    Import: 'import',
+    Create: 'create',
+}
+export const accountWizardMode$ = writable(AccountWizardMode.Import)
 
-export const accountWizard$ = writable(ImportPages)
-
-export function setImportPages() {
-    accountWizard$.update(() => ImportPages)
+export function setAccountWizardMode(mode) {
+    accountWizardMode$.update(() => mode)
 }
 
-export function setCreatePages() {
-    accountWizard$.update(() => CreatePages)
-}

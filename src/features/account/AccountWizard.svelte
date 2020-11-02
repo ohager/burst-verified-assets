@@ -1,8 +1,21 @@
 <script>
     import Wizard from '../_common/wizard/Wizard.svelte'
-    import {accountWizard$} from './accountWizardStore'
+    import { AccountWizardMode, accountWizardMode$ } from './accountWizardStore'
 
-    $: pages = $accountWizard$
+    import StartPage from './pages/StartPage.svelte'
+    import EnterPassphrasePage from './pages/EnterPassphrasePage.svelte'
+    import GeneratePassphrasePage from './pages/GeneratePassphrasePage.svelte'
+
+    const ImportPages = [StartPage, EnterPassphrasePage]
+    // TODO: correct pages
+    const CreatePages = [StartPage, GeneratePassphrasePage, StartPage]
+
+    let pages = ImportPages
+    $: {
+        pages = $accountWizardMode$ === AccountWizardMode.Import
+            ? ImportPages
+            : CreatePages
+    }
 
 </script>
 

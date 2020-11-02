@@ -2,18 +2,12 @@
     import WizardPage from '../../_common/wizard/WizardPage.svelte'
     import Radio from '@smui/radio'
     import FormField from '@smui/form-field'
-    import { setCreatePages, setImportPages } from '../accountWizardStore'
+    import { setAccountWizardMode, AccountWizardMode } from '../accountWizardStore'
 
-    let selected = 'import'
+    let selected = AccountWizardMode.Import
     $:{
-        if (selected === 'import') {
-            setImportPages()
-        } else {
-            setCreatePages()
-
-        }
+        setAccountWizardMode(selected)
     }
-
 </script>
 
 
@@ -24,11 +18,11 @@
     </p>
     <p class="options mdc-typography--body1">
         <FormField>
-            <Radio bind:group={selected} value="import" />
+            <Radio bind:group={selected} value={AccountWizardMode.Import} />
             <span slot="label">I HAVE ONE</span>
         </FormField>
         <FormField>
-            <Radio bind:group={selected} value="create" />
+            <Radio bind:group={selected} value={AccountWizardMode.Create} />
             <span slot="label">I NEED ONE</span>
         </FormField>
     </p>
