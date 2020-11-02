@@ -1,5 +1,5 @@
 import { serializeResponse } from '../__helpers__/serializeResponse'
-import { sendActivationMessage } from './sendActivationMessage'
+import {  } from '../../../services'
 
 export async function post(req, res, next) {
     // TODO: send message
