@@ -1,5 +1,5 @@
 <script>
-    import ImportAccount from '../../features/account/ImportAccount.svelte'
+    import AccountWizard from '../../features/account/AccountWizard.svelte'
 </script>
 
-<ImportAccount />
+<AccountWizard />
