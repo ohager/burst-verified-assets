@@ -1,4 +1,5 @@
 <script>
+    import { beforeUpdate } from 'svelte'
     import { goto } from '@sapper/app'
     import Button, { Label } from '@smui/button'
     import Page from '../Page.svelte'
@@ -9,7 +10,8 @@
     export let title = ''
     let currentPage = 0
 
-    $: hasFinished = currentPage === pages.length - 1
+    $: maxPageCount = pages.length - 1
+    $: hasFinished = currentPage === maxPageCount
 
     function handleBack() {
         if (currentPage === 0) {
@@ -22,8 +24,12 @@
         if (hasFinished) {
             return goto(RouteHome(), {})
         }
-        currentPage = Math.min(++currentPage, pages.length - 1)
+        currentPage = Math.min(++currentPage, maxPageCount)
     }
+
+    beforeUpdate(() => {
+        currentPage = Math.min(currentPage, maxPageCount)
+    })
 
 
 </script>
