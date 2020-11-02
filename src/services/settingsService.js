@@ -2,7 +2,7 @@ import { settingsRepository } from './repositories/settingsRepository'
 
 export const SettingsKeys = {
     CurrentAccount: 'current-account',
-    Theme:'theme'
+    Theme: 'theme',
 }
 
 export class SettingsService {

@@ -10,4 +10,6 @@ export const Events = {
     SyncTokenRequest: 'sync-tokens',
     ShowAccountDialog: 'show-account-dialog',
     ShowMenu: 'show-menu',
+    WizardCanProceed: 'wizard-can-proceed',
+    WizardFinished: 'wizard-finished',
 }

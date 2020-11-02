@@ -5,11 +5,11 @@
     import { setAccountWizardMode, AccountWizardMode } from '../accountWizardStore'
 
     let selected = AccountWizardMode.Import
+    let next = true
     $:{
         setAccountWizardMode(selected)
     }
 </script>
-
 
 <WizardPage>
     <h1 class="mdc-typography--headline6">Use existing account or create one?</h1>
