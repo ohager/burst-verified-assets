@@ -77,6 +77,8 @@ export default {
                         'generateSignedTransactionBytes',
                         'verifySignature',
                         'generateSignature',
+                        'PassPhraseGenerator',
+                        'hashSHA256'
                     ],
                     '@burstjs/contracts': [
                         'ContractDataView',

@@ -6,12 +6,13 @@
     import StartPage from './pages/StartPage.svelte'
     import EnterPassphrasePage from './pages/EnterPassphrasePage.svelte'
     import GeneratePassphrasePage from './pages/GeneratePassphrasePage.svelte'
+    import SelectedAccountPage from './pages/SelectedAccountPage.svelte'
     import { RouteHome } from '../../utils/routes'
     import { account$, clearAccount } from '../_common/accountStore'
 
     const ImportPages = [StartPage, EnterPassphrasePage]
     // TODO: correct pages
-    const CreatePages = [StartPage, GeneratePassphrasePage, StartPage]
+    const CreatePages = [StartPage, GeneratePassphrasePage, SelectedAccountPage]
 
     let pages = ImportPages
     let currentPage

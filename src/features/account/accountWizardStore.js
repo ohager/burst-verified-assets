@@ -15,3 +15,9 @@ export const accountWizardCanProceed$ = writable(true)
 export function setAccountWizardCanProceed(canProceed = true) {
     accountWizardCanProceed$.update(() => canProceed)
 }
+
+export const accountWizardPhrase$ = writable('')
+
+export function setAccountWizardPhrase(phrase) {
+    accountWizardPhrase$.update(() => phrase)
+}
