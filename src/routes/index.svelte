@@ -4,7 +4,7 @@
     import { RouteAccount } from '../utils/routes'
     import { account$ } from '../features/_common/accountStore'
 
-    import AssetView from '../features/intro/intro.svelte'
+    import Intro from '../features/intro/Intro.svelte'
 
     function handleClick() {
         goto(RouteAccount())
@@ -18,7 +18,7 @@
 <div>
     {#if !$account$.accountId.length}
         <AccountFabButton on:mouseenter={prefetchRoute} on:click={handleClick} />
-        <AssetView />
+        <Intro />
     {:else}
         <h1>To do Start screen for "logged" user</h1>        
     {/if}
