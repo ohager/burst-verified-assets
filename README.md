@@ -1,6 +1,17 @@
 # Burst Verified Assets
+## A Burst token protocol extension
 
-TO DO
+This protocol describes a new Burst token protocol layer. A layer that allows any token to create a stronger link to the real/digital assets. Making it more attractive to tokenize and sell assets on the Burst platform to non-Burst account holders.
+
+All the information of the asset is collected in a JSON (asset/token id, custom buy url, websites, contact, media, downloads and SHA256 hashes). This data is used within a javascript web app to generate a portal for each asset.
+
+Burst's built-in asset/token system provides the means to create a token. While the alias system gives a human readable unique index and allows for mutable storage of the JSON data. Which is useful for asset updates from the creator and automatically signed and secure. For example a software binary update with new urls and hashes.
+
+The web portal acts as a token specific wallet. The visitor of the portal creates a Burst compatible paper wallet, to hold the token and only holds some Burst (plancks) for token and account transactions. The Burst can be obtained from the seller via the custom token buy link (webshop) or Burst faucet. 
+
+Users can import existing Burst accounts holding more assets. But the security model via browser password input should not encourage this. This model is compatible with password managers to lower the onboarding threshold.
+
+The verified aspect of this protocol is performed by dropping the asset files on the web portal. This calculates the SHA256 hash of the file and will attempt to match it with the hashes in the asset JSON. This verification ensures that the file is genuine to the tokens they represent.
 
 
 # Development
