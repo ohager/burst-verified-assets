@@ -1,8 +1,8 @@
 <script>
-    import AccountFabButton from '../features/_common/AccountFabButton.svelte'
+    import AccountFabButton from '../features/@common/AccountFabButton.svelte'
     import { goto, prefetch } from '@sapper/app'
     import { RouteAccount } from '../utils/routes'
-    import { account$ } from '../features/_common/accountStore'
+    import { account$ } from '../features/@common/accountStore'
 
     import Intro from '../features/intro/Intro.svelte'
 

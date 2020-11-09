@@ -12,24 +12,14 @@
 
     $: {
         setAccountWizardCanProceed(false)
-        if(isAccountValid && isPassphraseValid){
-            setAccountWizardCanProceed(true)
-            setAccount(accountId)
-        }
     }
 
 </script>
 
 
 <WizardPage>
-    <h1 class="mdc-typography--headline6">Enter your account information</h1>
+    <h1 class="mdc-typography--headline6">Wait for your accounts activation</h1>
     <div class="fullwidth">
-        <AccountInput bind:account={accountId}
-                      bind:valid={isAccountValid}
-        />
-        <PassphraseInput bind:valid={isPassphraseValid}
-                         bind:passphrase={passphrase}
-                         account={accountId}
-        />
+       TO DO wait for activation....
     </div>
 </WizardPage>

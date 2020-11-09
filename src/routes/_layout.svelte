@@ -19,7 +19,7 @@
         LeftSideMenu,
         Maintenance,
         MaintenanceHeader,
-    } from '../features/_common'
+    } from '../features/@common'
 
     export let isTestnet
     export let isMaintenance
