@@ -2,7 +2,7 @@
     import {onMount} from 'svelte'
     import WizardPage from '../../@common/wizard/WizardPage.svelte'
     import Button, { Label } from '@smui/button'
-    import { PassPhraseGenerator, hashSHA256 } from '@burstjs/crypto'
+    import { PassPhraseGenerator, hashSHA256, generateMasterKeys } from '@burstjs/crypto'
     import hashicon from 'hashicon'
     import { isClientSide } from '../../../utils/isClientSide'
     import { setAccountWizardPhrase } from '../accountWizardStore'
@@ -20,7 +20,8 @@
     }
 
     async function mountHashIcon(passphrase, targetEl) {
-        const hashed = hashSHA256(passphrase)
+        const {publicKey} = generateMasterKeys(passphrase)
+        const hashed = hashSHA256(publicKey)
         while (targetEl.lastElementChild) {
             targetEl.removeChild(targetEl.lastElementChild);
         }
@@ -58,7 +59,7 @@
     </div>
 
     <div class="button">
-        <Button on:click={shuffle} variant="raised">
+        <Button on:click={shuffle} color="secondary" variant="raised">
             <Label>Reshuffle</Label>
         </Button>
     </div>

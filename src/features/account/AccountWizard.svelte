@@ -7,12 +7,12 @@
     import EnterPassphrasePage from './pages/EnterPassphrasePage.svelte'
     import GeneratePassphrasePage from './pages/GeneratePassphrasePage.svelte'
     import SelectedAccountPage from './pages/SelectedAccountPage.svelte'
+    import ActivateAccountPage from './pages/ActivateAccountPage.svelte'
     import { RouteHome } from '../../utils/routes'
     import { account$, clearAccount } from '../@common/accountStore'
 
     const ImportPages = [StartPage, EnterPassphrasePage]
-    // TODO: correct pages
-    const CreatePages = [StartPage, GeneratePassphrasePage, SelectedAccountPage]
+    const CreatePages = [StartPage, GeneratePassphrasePage, SelectedAccountPage, ActivateAccountPage]
 
     let pages = ImportPages
     let currentPage
@@ -38,7 +38,7 @@
 </script>
 
 <Wizard
-    iconSrc="/img/tutorial.svg"
+    iconSrc="/img/user.svg"
     title="Enter with Account"
     {pages}
     {canProceed}

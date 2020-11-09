@@ -20,6 +20,7 @@
 
     :global(*.theme-default){
         --theme-text: var(--burst-dark-blue);
+        --theme-text-inverted: var(--solar-grey);
         --mdc-theme-background : white;
         --mdc-theme-error: var(--material-color-red-900);
         --mdc-theme-primary : var(--burst-blue);
@@ -36,6 +37,7 @@
 
     :global(*.theme-dark){
         --theme-text: var(--solar-grey);
+        --theme-text-inverted: var(--burst-dark-blue);
         --mdc-theme-background : var(--burst-darker-blue);
         --mdc-theme-error: var(--material-color-red-600);
         --mdc-theme-on-background: var(--theme-text);
@@ -82,6 +84,8 @@
         color: var(--theme-text) !important;
     }
 
+
+
     :global([class*="mdc-list"]),
     :global([class*="mdc-drawer"]) {
         background-color: var(--theme-lighter-background);
@@ -98,6 +102,11 @@
     :global(.mdc-button__label){
         color: var(--theme-text);
     }
+
+    :global([class*="mdc-button--raised"] .mdc-button__label){
+        color: var(--theme-text-inverted) !important;
+    }
+
 
     :global(.mdc-tab--active){
         background-color: var(--mdc-theme-background) !important;
