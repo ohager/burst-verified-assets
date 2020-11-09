@@ -10,7 +10,7 @@
     import { accountService } from '../../services/accountService'
     import { TokenContract } from '../../context'
     import { BurstValue } from '@burstjs/util'
-    import AccountInput from '../_common/AccountInput.svelte'
+    import AccountInput from '../@common/AccountInput.svelte'
 
     export let accountId = ''
 

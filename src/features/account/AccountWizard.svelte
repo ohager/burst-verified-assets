@@ -1,5 +1,5 @@
 <script>
-    import Wizard from '../_common/wizard/Wizard.svelte'
+    import Wizard from '../@common/wizard/Wizard.svelte'
     import { goto } from '@sapper/app'
     import { accountWizardCanProceed$, AccountWizardMode, accountWizardMode$ } from './accountWizardStore'
 
@@ -8,7 +8,7 @@
     import GeneratePassphrasePage from './pages/GeneratePassphrasePage.svelte'
     import SelectedAccountPage from './pages/SelectedAccountPage.svelte'
     import { RouteHome } from '../../utils/routes'
-    import { account$, clearAccount } from '../_common/accountStore'
+    import { account$, clearAccount } from '../@common/accountStore'
 
     const ImportPages = [StartPage, EnterPassphrasePage]
     // TODO: correct pages

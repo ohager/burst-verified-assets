@@ -6,7 +6,7 @@
     import { RouteAccountTokens, RouteHome } from '../../utils/routes'
     import TabAccount from './TabAccount.svelte'
     import TabTokenInfo from './TabTokenInfo.svelte'
-    import TabContent from '../_common/TabContent.svelte'
+    import TabContent from '../@common/TabContent.svelte'
     import TabConfirm from './TabConfirm.svelte'
     import {
         isValidAccount,
@@ -16,8 +16,8 @@
         isValidRepo,
     } from '../../utils/validators'
     import { calculateDataLength, registration$, tokenData } from './registrationStore'
-    import { account$ } from '../_common/accountStore'
-    import { loading$ } from '../_common/appStore'
+    import { account$ } from '../@common/accountStore'
+    import { loading$ } from '../@common/appStore'
     import Introduction from './Introduction.svelte'
     import { MaxDataLength } from './constants'
     import { applicationTokenService } from '../../services/applicationTokenService'

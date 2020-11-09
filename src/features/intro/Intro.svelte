@@ -2,7 +2,7 @@
     import {
         Page,
         appStore,
-    } from './../_common'
+    } from './../@common'
     import { ThemeNames } from '../../utils/themeNames'
 
     const { theme$ } = appStore

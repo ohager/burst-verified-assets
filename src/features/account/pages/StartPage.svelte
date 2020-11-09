@@ -1,5 +1,5 @@
 <script>
-    import WizardPage from '../../_common/wizard/WizardPage.svelte'
+    import WizardPage from '../../@common/wizard/WizardPage.svelte'
     import Radio from '@smui/radio'
     import FormField from '@smui/form-field'
     import { setAccountWizardMode, AccountWizardMode } from '../accountWizardStore'

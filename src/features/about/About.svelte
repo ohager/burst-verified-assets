@@ -2,11 +2,11 @@
     import {
         Page,
         appStore,
-    } from '../_common'
-    import Logo from '../_common/Logo.svelte'
+    } from '../@common'
+    import Logo from '../@common/Logo.svelte'
     import { ThemeNames } from '../../utils/themeNames'
     import List, { Item, Graphic, Text } from '@smui/list'
-    import Link from '../_common/Link.svelte'
+    import Link from '../@common/Link.svelte'
 
     const { theme$ } = appStore
 

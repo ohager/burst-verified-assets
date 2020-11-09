@@ -1,6 +1,6 @@
 <script>
     import {onMount} from 'svelte'
-    import WizardPage from '../../_common/wizard/WizardPage.svelte'
+    import WizardPage from '../../@common/wizard/WizardPage.svelte'
     import Button, { Label } from '@smui/button'
     import { PassPhraseGenerator, hashSHA256 } from '@burstjs/crypto'
     import hashicon from 'hashicon'

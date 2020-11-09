@@ -1,5 +1,5 @@
 <script>
-    import WizardPage from '../../_common/wizard/WizardPage.svelte'
+    import WizardPage from '../../@common/wizard/WizardPage.svelte'
     import { accountWizardPhrase$ } from '../accountWizardStore'
     import { generateMasterKeys, getAccountIdFromPublicKey } from '@burstjs/crypto'
     import { convertNumericIdToAddress } from '@burstjs/util'

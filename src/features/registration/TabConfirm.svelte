@@ -2,7 +2,7 @@
     import TextField from '@smui/textfield'
     import HelperText from '@smui/textfield/helper-text/index'
     import Icon from '@smui/textfield/icon/index'
-    import { TokenItemVariant, TokenItem } from '../_common/'
+    import { TokenItemVariant, TokenItem } from '../@common/'
     import { registration$ } from './registrationStore'
     import { isEmptyString } from '../../utils/isEmptyString'
     import { isValidPassphrase } from '../../utils/validators'

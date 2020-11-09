@@ -1,9 +1,9 @@
 <script>
-    import WizardPage from '../../_common/wizard/WizardPage.svelte'
-    import AccountInput from '../../_common/AccountInput.svelte'
-    import PassphraseInput from '../../_common/PassphraseInput.svelte'
+    import WizardPage from '../../@common/wizard/WizardPage.svelte'
+    import AccountInput from '../../@common/AccountInput.svelte'
+    import PassphraseInput from '../../@common/PassphraseInput.svelte'
     import { setAccountWizardCanProceed } from '../accountWizardStore'
-    import { setAccount } from '../../_common/accountStore'
+    import { setAccount } from '../../@common/accountStore'
 
     let isPassphraseValid = false
     let isAccountValid = false
