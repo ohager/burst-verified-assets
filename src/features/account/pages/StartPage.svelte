@@ -2,11 +2,12 @@
     import WizardPage from '../../@common/wizard/WizardPage.svelte'
     import Radio from '@smui/radio'
     import FormField from '@smui/form-field'
-    import { setAccountWizardMode, AccountWizardMode } from '../accountWizardStore'
+    import { setAccountWizardMode, AccountWizardMode, setAccountWizardCanProceed } from '../accountWizardStore'
 
     let selected = AccountWizardMode.Import
     let next = true
     $:{
+        setAccountWizardCanProceed(true)
         setAccountWizardMode(selected)
     }
 </script>

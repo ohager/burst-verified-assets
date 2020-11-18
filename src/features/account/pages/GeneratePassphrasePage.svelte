@@ -5,7 +5,7 @@
     import { PassPhraseGenerator, hashSHA256, generateMasterKeys } from '@burstjs/crypto'
     import hashicon from 'hashicon'
     import { isClientSide } from '../../../utils/isClientSide'
-    import { setAccountWizardPhrase } from '../accountWizardStore'
+    import { setAccountWizardCanProceed, setAccountWizardPhrase } from '../accountWizardStore'
 
     let passphrases = new Array(3)
     let hashiconContainer = new Array(3)
@@ -37,6 +37,7 @@
                 selectedIndex = Math.ceil((Math.random() * 3)) - 1
             })
         })
+        setAccountWizardCanProceed(true)
     }
 
     $: {
