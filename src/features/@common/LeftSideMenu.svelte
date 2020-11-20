@@ -88,7 +88,7 @@
 <Drawer variant="modal" bind:this={drawerElement} bind:open={open}>
     <Header>
         <Title>Burst Verified Assets</Title>
-        <Subtitle>Protect your Intellectual Properties</Subtitle>
+        <Subtitle>Unique tokenized assets</Subtitle>
         <div class="theme-switch">
             <FormField>
                 <Switch bind:checked={darkThemeChecked}/>
