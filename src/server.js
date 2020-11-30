@@ -9,7 +9,7 @@ const { PORT, NODE_ENV } = process.env
 const dev = NODE_ENV === 'development'
 
 config()
-polka() // You can also use Express
+export default polka() // You can also use Express
     .use(
         compression({ threshold: 0 }),
         bodyParser.json(),
