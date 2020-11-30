@@ -3,7 +3,7 @@
     import HelperText from '@smui/textfield/helper-text/index'
     import Icon from '@smui/textfield/icon/index'
     import { assureAccountId } from '../../utils/assureAccountId'
-    import { convertNumericIdToAddress } from '@burstjs/util'
+    import { convertAddressToNumericId, convertNumericIdToAddress, isBurstAddress } from '@burstjs/util'
     import { pruneBurstErrorMessage } from '../../utils/pruneBurstErrorMessage'
     import { accountService } from '../../services/accountService'
 
@@ -13,7 +13,16 @@
     let validationTimeout = null
     let errorMessage = 'Account is required'
 
-    $: accountAddress = valid ? convertNumericIdToAddress(account) : ''
+    function accountLabel(account){
+    }
+
+    $: accountAddress = () => {
+        if(!valid) return ''
+
+        return isBurstAddress(account)
+            ? convertAddressToNumericId(account)
+            : convertNumericIdToAddress(account)
+    }
     $: {
         if(account.length){
             validateAccount(account)
@@ -53,7 +62,7 @@
                 {valid ? 'check_circle' : 'error'}
             </Icon>
             <div class="address">
-                {accountAddress}
+                {accountAddress()}
             </div>
         </TextField>
         <HelperText validationMsg>{errorMessage}</HelperText>

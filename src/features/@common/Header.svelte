@@ -13,6 +13,7 @@
     import Logo from './Logo.svelte'
     import Stamp from './Stamp.svelte'
     import LoadingBar from './LoadingBar.svelte'
+    import { assureAccountId } from '../../utils/assureAccountId'
 
     export let isMenuOpen = false
     export let isTestnet = false

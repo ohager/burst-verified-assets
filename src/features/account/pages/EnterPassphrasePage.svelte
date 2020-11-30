@@ -4,6 +4,7 @@
     import PassphraseInput from '../../@common/PassphraseInput.svelte'
     import { setAccountWizardCanProceed } from '../accountWizardStore'
     import { setAccount } from '../../@common/accountStore'
+    import { assureAccountId } from '../../../utils/assureAccountId'
 
     let isPassphraseValid = false
     let isAccountValid = false
@@ -14,7 +15,7 @@
         setAccountWizardCanProceed(false)
         if(isAccountValid && isPassphraseValid){
             setAccountWizardCanProceed(true)
-            setAccount(accountId)
+            setAccount(assureAccountId(accountId))
         }
     }
 
