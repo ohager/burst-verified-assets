@@ -22,9 +22,6 @@
             : CreatePages
     }
     $: canProceed = $accountWizardCanProceed$
-    $: {
-        console.log('currentPage:', currentPage)
-    }
 
     function returnHome(){
         clearAccount()
