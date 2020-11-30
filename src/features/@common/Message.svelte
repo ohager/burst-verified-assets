@@ -60,7 +60,11 @@
     <span class={`mdc-typography--button ml ${type}`}>
         {type}
     </span>
-    <Label>{message}</Label>
+    <span class='mdc-snackbar__label'>
+        {message}
+    </span>
+    <!-- this label is buggy - its not updating correctly -->
+    <Label></Label>
     <Actions>
         <IconButton class="material-icons" title="Dismiss">close</IconButton>
     </Actions>
