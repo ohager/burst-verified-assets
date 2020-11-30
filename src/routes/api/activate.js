@@ -1,4 +1,4 @@
-import { serializeResponse } from '../__helpers__/serializeResponse'
+import { serializeResponse } from './__helpers__/serializeResponse'
 import { HttpImpl, HttpError } from '@burstjs/http'
 
 const http = new HttpImpl(process.env.SAPPER_APP_ACTIVATION_SERVICE_URL)
