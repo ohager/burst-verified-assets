@@ -1,4 +1,6 @@
 <script>
+    import Checkbox from '@smui/checkbox';
+    import FormField from '@smui/form-field';
     import List from '@smui/list'
     import IconButton from '@smui/icon-button'
     import WizardPage from '../../@common/wizard/WizardPage.svelte'
@@ -12,6 +14,7 @@
 
     let infoList = ''
     let hashiconEl = null
+    let hasCopied = false
 
     $: passphrase = $accountWizardPhrase$
     $: {
@@ -30,7 +33,15 @@
 
         if (hashiconEl) {
             const hashed = hashSHA256(publicKey)
+            let targetEl = hashiconEl
+            while (targetEl.lastElementChild) {
+                targetEl.removeChild(targetEl.lastElementChild);
+            }
             hashiconEl.appendChild(hashicon(hashed))
+        }
+
+        if(hasCopied){
+            setAccountWizardCanProceed(true)
         }
     }
 
@@ -38,7 +49,6 @@
         try {
             await navigator.clipboard.writeText(passphrase)
             dispatchEvent(Events.Success, 'Copied to Clipboard')
-            setAccountWizardCanProceed(true)
         } catch (e) {
             dispatchEvent(Events.Error, 'Could not copy to Clipboard 🤷‍♂')
         }
@@ -70,6 +80,11 @@
             applications
         </p>
     </section>
+    <FormField>
+        <Checkbox bind:checked={hasCopied} />
+        <span slot="label">Yes, I copied and stored the secret passphrase</span>
+    </FormField>
+
 </WizardPage>
 
 

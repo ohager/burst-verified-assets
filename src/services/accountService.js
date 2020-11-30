@@ -1,13 +1,9 @@
 import { BurstApi } from '../context'
 import { BurstValue } from '@burstjs/util'
 import { generateMasterKeys, getAccountIdFromPublicKey } from '@burstjs/crypto'
-import { AttachmentMessage } from '@burstjs/core'
+import { HttpImpl } from '@burstjs/http'
 
 export class AccountService {
-    constructor() {
-        this._accountApi = BurstApi.account
-    }
-
     async getSuggestedFee() {
         const fees = await BurstApi.network.suggestFee()
         return BurstValue.fromPlanck(fees.standard.toString(10))
@@ -40,36 +36,14 @@ export class AccountService {
     }
 
     async getBalance(accountId) {
-        const { balanceNQT } = await this._accountApi.getAccountBalance(accountId)
+        const { balanceNQT } = await BurstApi.account.getAccountBalance(accountId)
         return BurstValue.fromPlanck(balanceNQT)
     }
 
-    async activate({ recipientPublicKey, activationPassphrase }) {
-        const recipientId = getAccountIdFromPublicKey(recipientPublicKey)
-        const senderKeys = generateMasterKeys(activationPassphrase)
-
-        const activationMessage = 'Welcome to Burst!'
-
-        const attachment = new AttachmentMessage({
-            messageIsText: true,
-            message: activationMessage,
-        })
-
-        try {
-            const suggestedFee = await this.getSuggestedFee()
-            await BurstApi.transaction.sendAmountToSingleRecipient({
-                // TODO: make activation fund configurable
-                amountPlanck: BurstValue.fromBurst(0.5).getPlanck(),
-                feePlanck: suggestedFee.getPlanck(),
-                senderPublicKey: senderKeys.publicKey,
-                senderPrivateKey: senderKeys.signPrivateKey,
-                recipientId,
-                recipientPublicKey,
-                attachment,
-            })
-        } catch (e) {
-            console.log(e)
-        }
+    async activate({ publicKey }) {
+        const account = getAccountIdFromPublicKey(publicKey)
+        const http = new HttpImpl(location.origin)
+        await http.post('api/activate', { account, publicKey })
     }
 }
 
