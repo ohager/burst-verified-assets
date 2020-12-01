@@ -1,16 +1,16 @@
 /**
  * data struct
  *
- * at: string
+ * id: string
  * [fieldName]:expectedValue
  * startTime: number
  */
-export class TokenMonitor {
+export class Monitor {
     constructor(data) {
         Object.keys(data).forEach(k => this[k] = data[k])
     }
 
     static schema() {
-        return 'at'
+        return 'id'
     }
 }

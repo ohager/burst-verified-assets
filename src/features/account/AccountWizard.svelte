@@ -15,9 +15,10 @@
     import ActivateAccountPage from './pages/ActivateAccountPage.svelte'
     import { RouteHome } from '../../utils/routes'
     import { account$, clearAccount } from '../@common/accountStore'
-    import { accountService } from '../../services'
+    import { accountService, monitorService } from '../../services'
     import { dispatchEvent } from '../../utils/dispatchEvent'
     import { Events } from '../../utils/events'
+    import { activationMonitorService } from './activationMonitorService'
 
     const ImportPages = [StartPage, EnterPassphrasePage]
     const CreatePages = [StartPage, GeneratePassphrasePage, SelectedAccountPage, ActivateAccountPage]
@@ -39,8 +40,11 @@
     async function finalize() {
         try {
             if ($accountWizardMode$ === AccountWizardMode.Create) {
-                let keys = accountService.getKeys($accountWizardPhrase$)
-                await accountService.activate({ publicKey: keys.publicKey })
+                const phrase = $accountWizardPhrase$
+                const { publicKey } = accountService.getKeys(phrase)
+                await accountService.activate({ publicKey })
+                const accountId = accountService.getAccountIdFromPassphrase(phrase)
+                await activationMonitorService.start(accountId)
             }
             dispatchEvent(Events.Success, 'Requested Account Activation')
         } catch (e) {
