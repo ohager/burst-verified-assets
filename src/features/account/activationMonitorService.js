@@ -10,14 +10,10 @@ class ActivationMonitorService {
     }
 
     async start(accountId) {
-        let pollCount = 0
         return this._monitorService.startMonitor({
-            id: accountId,
+            key: `activation:${accountId}`,
             asyncFetcher: async () => {
-                // TODO: remove mocked implementation
-                console.log('trying to fetch account:', accountId, ++pollCount)
-                const accountExists = pollCount >= 2
-                // const accountExists = await this._accountService.existsAccount(accountId)
+                const accountExists = await this._accountService.existsAccount(accountId)
                 return Promise.resolve({
                     accountId,
                     accountExists,

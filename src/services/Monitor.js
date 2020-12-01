@@ -1,22 +1,18 @@
-/**
- * A polling mechanism to check for unconfirmed tx and so..
- */
 export class Monitor {
-    constructor({ id, intervalSecs, abortAfterSecs }) {
-        this._id = id
+    constructor({ key, intervalSecs, abortAfterSecs }) {
+        this._key = key
         this._intervalSecs = intervalSecs
         this._abortAfterSecs = abortAfterSecs
         this._handle = undefined
     }
 
     _debug(msg) {
-        console.debug(`[${this._id}] - ${msg}`)
+        console.debug(`[${this._key}] - ${msg}`)
     }
 
     start({ asyncFetcher, predicateFn, callback, startTime }) {
         this._debug('Monitoring...')
         this._handle = setTimeout(async () => {
-            this._debug('Polling...')
             try {
                 const data = await asyncFetcher()
                 this._debug('Fetched', data)

@@ -15,21 +15,21 @@ export class MonitorService {
     async restoreMonitors() {
         const monitors = await this._monitorRepository.getAll()
         monitors.forEach(monitor => {
-            this.restoreMonitor(monitor.id)
+            this.restoreMonitor(monitor.key)
         })
     }
 
-    async restoreMonitor(id) {
-        const { expected, startTime } = await this._monitorRepository.get(id)
+    async restoreMonitor(key) {
+        const { expected, startTime } = await this._monitorRepository.get(key)
         const fieldName = Object.keys(expected)[0]
         const expectedValue = expected[fieldName]
         const expired = (Date.now() - startTime) / 1000 > Vars.BlockchainWatcherTimeoutSecs
         if (expired) {
-            console.debug('Expired Monitor', id)
-            return this.removeMonitor(id)
+            console.debug('Expired Monitor', key)
+            return this.removeMonitor(key)
         }
         await this.startMonitor({
-            id,
+            key,
             fieldName,
             expectedValue,
             startTime,
@@ -38,7 +38,7 @@ export class MonitorService {
 
     /**
      * Starts a polling monitor
-     * @param id The id for the monitor, i.e monitor id
+     * @param key The id for the monitor, i.e monitor id
      * @param asyncFetcher The data fetcher as promise, that's used to fetch the data to be monitored
      * @param targetFieldName The field name of entity to be monitored
      * @param targetValue The value of the monitored entity, such that the callback returns fulfilled = true
@@ -48,7 +48,7 @@ export class MonitorService {
      * @returns {Promise<void>}
      */
     async startMonitor({
-        id,
+        key,
         asyncFetcher,
         targetFieldName,
         targetValue,
@@ -56,13 +56,13 @@ export class MonitorService {
         fulfilledCallback,
         startTime = Date.now(),
     }) {
-        const activeMonitor = this.activeMonitors.includes(id)
+        const activeMonitor = this.activeMonitors.includes(key)
         if (activeMonitor) {
-            console.debug(`Monitor [${id}] already active - ignored`)
+            console.debug(`Monitor [${key}] already active - ignored`)
             return Promise.resolve()
         }
         const monitor = new Monitor({
-            id,
+            key,
             abortAfterSecs: Vars.BlockchainWatcherTimeoutSecs,
             intervalSecs: Vars.BlockchainWatcherIntervalSecs,
         })
@@ -70,7 +70,7 @@ export class MonitorService {
             asyncFetcher,
             predicateFn: state => state[targetFieldName] === targetValue,
             callback: async (data, fulfilled) => {
-                await this.removeMonitor(id)
+                await this.removeMonitor(key)
                 if (!fulfilled) {
                     timeoutCallback(data)
                 } else {
@@ -81,18 +81,18 @@ export class MonitorService {
         })
 
         await this._monitorRepository.insert({
-            id,
+            id: key,
             expected: {
                 [targetFieldName]: targetValue,
             },
             startTime,
         })
 
-        this._activeMonitors.push(id)
+        this._activeMonitors.push(key)
     }
 
-    async removeMonitor(id) {
-        await this._monitorRepository.remove(id)
+    async removeMonitor(key) {
+        await this._monitorRepository.remove(key)
         this._activeMonitors = this._activeMonitors.filter(id => id !== id)
     }
 }
