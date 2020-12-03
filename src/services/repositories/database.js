@@ -1,6 +1,6 @@
 import Dexie from 'dexie'
 import { Settings } from './models/settings'
-import { TokenMonitor } from './models/tokenMonitor'
+import { Monitor } from './models/monitor'
 
 const database = new Dexie('app-store')
 
@@ -8,11 +8,11 @@ const Version = 1
 
 const Schema = {
     settings: Settings.schema(),
-    tokenMonitors: TokenMonitor.schema(),
+    monitors: Monitor.schema(),
 }
 
 database.version(Version).stores(Schema)
 database.settings.mapToClass(Settings)
-database.tokenMonitors.mapToClass(TokenMonitor)
+database.monitors.mapToClass(Monitor)
 
 export const db = database
