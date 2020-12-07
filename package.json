@@ -34,11 +34,12 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
-    "@burstjs/contracts": "^0.5.1",
-    "@burstjs/core": "^0.5.1",
-    "@burstjs/crypto": "^0.5.1",
-    "@burstjs/http": "^0.5.1",
-    "@burstjs/util": "^0.5.1",
+    "@burstjs/contracts": "^0.6.0-alpha.4",
+    "@burstjs/core": "^0.6.0-alpha.4",
+    "@burstjs/crypto": "^0.6.0-alpha.4",
+    "@burstjs/http": "^0.6.0-alpha.4",
+    "@burstjs/monitor": "^0.6.0-alpha.4",
+    "@burstjs/util": "^0.6.0-alpha.4",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "dexie": "^3.0.2",

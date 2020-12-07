@@ -19,6 +19,7 @@
     import { dispatchEvent } from '../../utils/dispatchEvent'
     import { Events } from '../../utils/events'
     import { activationMonitorService } from './activationMonitorService'
+    import { BurstApi } from '../../context'
 
     const ImportPages = [StartPage, EnterPassphrasePage]
     const CreatePages = [StartPage, GeneratePassphrasePage, SelectedAccountPage, ActivateAccountPage]
